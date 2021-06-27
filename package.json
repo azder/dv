@@ -1,0 +1,22 @@
+{
+  "name": "@me5on/dv",
+  "version": "0.0.0+4",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "bin": "./index.js",
+  "private": false,
+  "license": "MIT",
+  "repository": "https://github.com/me5on/dv",
+  "author": {
+    "name": "azder",
+    "email": "azhder@gmail.com",
+    "url": ""
+  },
+  "scripts": {
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "husky": "^6.0.0"
+  }
+}
