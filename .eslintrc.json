@@ -1,0 +1,17 @@
+{
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "extends": [
+    "@sloy/eslint-config-recommended"
+  ],
+  "env": {
+    "browser": false,
+    "node": true
+  },
+  "globals": {
+    "Symbol": false,
+    "Promise": false,
+    "BigInt": false
+  }
+}

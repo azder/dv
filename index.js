@@ -10,6 +10,9 @@ const PLS = '+';
 const MIN = '-';
 const DOT = '.';
 
+const SPACE_VER = 4;
+const SPACE_PKG = 2;
+
 const DIR = process.cwd();
 const VER = path.join(DIR, 'ver.json');
 const PKG = path.join(DIR, 'package.json');
@@ -24,20 +27,22 @@ const write = (where, space, what) => fs.writeFileSync(where, JSON.stringify(wha
 const quit = () => process.exit(0);
 const bail = () => process.exit(1);
 
-const print = (...$$) => console.log('bump:', ...$$);
-const alert = (...$$) => console.error('bump:', ...$$);
+const print = (...$$) => console.log('bump:', ...$$); // eslint-disable-line no-console
+const alert = (...$$) => console.error('bump:', ...$$); // eslint-disable-line no-console
 
+// eslint-disable-next-line no-console
 const help = () => console.log(`
 $ npx dv                # to display current status
 $ npx dv status         # to display current status
 $ npx dv --help         # to display this help message
-$ npx dv bump --dry-run # to see what changes will be done 
+$ npx dv bump --dry-run # to see what changes will be done
 $ npx dv bump           # to actually do the changes
 $ npx dv bump --quiet   # to do the changes without console output
 
 ver.json must be present next to package.json
 containing array with first element being integer
 `);
+
 
 const CMD = 'bump' === process.argv[2] ? 'bump' : 'status';
 const FLG = Object.freeze({
@@ -78,8 +83,8 @@ try {
     }
 
     if (!FLG.dry) {
-        write(VER, 4, newVer);
-        write(PKG, 2, {...pkg, version: newPkg});
+        write(VER, SPACE_VER, newVer);
+        write(PKG, SPACE_PKG, {...pkg, version: newPkg});
     }
 
 } catch (e) {
