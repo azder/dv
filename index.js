@@ -44,6 +44,7 @@ containing array with first element being integer
 `);
 
 
+// eslint-disable-next-line no-magic-numbers
 const ARG = process.argv.slice(2);
 
 const CMD = 'bump' === ARG[0] ? 'bump' : 'status';
