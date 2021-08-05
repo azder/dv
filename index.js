@@ -44,11 +44,13 @@ containing array with first element being integer
 `);
 
 
-const CMD = 'bump' === process.argv[2] ? 'bump' : 'status';
+const ARG = process.argv.slice(2);
+
+const CMD = 'bump' === ARG[0] ? 'bump' : 'status';
 const FLG = Object.freeze({
-    dry:   process.argv.includes('--dry-run'),
-    quiet: process.argv.includes('--quiet'),
-    help:  process.argv.includes('--help'),
+    dry:   ARG.includes('--dry-run'),
+    quiet: ARG.includes('--quiet'),
+    help:  ARG.includes('--help'),
 });
 
 
@@ -60,20 +62,21 @@ try {
     }
 
     const oldVer = read(VER);
-    const [head, ...tail] = oldVer ?? [];
-    const newVer = [
-        (bint(head) + ONE).toString(),
-        ...(tail ?? void ONE),
-    ];
 
     const pkg = JSON.parse(fs.readFileSync(PKG).toString());
     const oldPkg = pkg?.version ?? '0.0.0+0';
 
     if ('status' === CMD) {
-        print('ver:', canon(newVer));
+        print('ver:', canon(oldVer));
         print('pkg:', oldPkg);
         quit();
     }
+
+    const [head, ...tail] = oldVer ?? [];
+    const newVer = [
+        (bint(head) + ONE).toString(),
+        ...(tail ?? void ONE),
+    ];
 
     const newPkg = `${oldPkg.split(PLS)[0]}${PLS}${newVer[0]}`;
 
