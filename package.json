@@ -1,6 +1,6 @@
 {
   "name": "@me5on/dv",
-  "version": "0.0.2+14",
+  "version": "0.0.3+15",
   "description": "DV",
   "type": "module",
   "main": "index.js",
@@ -14,10 +14,10 @@
     "url": ""
   },
   "scripts": {
-    "esl:once": "eslint -c index.js --ignore-path _.gitignore ./",
-    "esl:wtch": "nodemon --exec eslint -c index.js --ignore-path _.gitignore ./",
-    "esl:ofix": "eslint -c index.js --ignore-path _.gitignore --fix ./",
-    "esl:wfix": "nodemon --exec eslint -c index.js --ignore-path _.gitignore --fix ./",
+    "esl:once": "eslint --ignore-path .gitignore ./",
+    "esl:wtch": "nodemon --exec eslint --ignore-path .gitignore ./",
+    "esl:ofix": "eslint --ignore-path .gitignore --fix ./",
+    "esl:wfix": "nodemon --exec eslint --ignore-path .gitignore --fix ./",
     "jst:ocvr": "NODE_OPTIONS=--experimental-vm-modules jest --coverage",
     "jst:wcvr": "NODE_NO_WARNINGS=1 NODE_OPTIONS=--experimental-vm-modules jest --watch-all --coverage",
     "jst:once": "NODE_OPTIONS=--experimental-vm-modules jest",
